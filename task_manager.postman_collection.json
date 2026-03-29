@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "task-manager-api",
+		"name": "Task Manager v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": { "padding": { "padding": "0" } }
+						},
+						"url": "http://localhost:5000/api/v1/auth/register"
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": { "padding": { "padding": "0" } }
+						},
+						"url": "http://localhost:5000/api/v1/auth/login"
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Complete Project\",\n    \"description\": \"Finish the backend assignment\",\n    \"priority\": \"high\"\n}"
+						},
+						"url": "http://localhost:5000/api/v1/tasks"
+					}
+				},
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"url": "http://localhost:5000/api/v1/tasks"
+					}
+				}
+			]
+		}
+	]
+}
